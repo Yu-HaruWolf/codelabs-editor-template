@@ -13,7 +13,6 @@ RUN if [ "$VARIANT" = "noble" ]; then \
     fi
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends golang-go
-    # [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
+    && apt-get -y install --no-install-recommends git golang-go
+ENV GOPATH=/go
+RUN mkdir /go && export PATH="$PATH:/go/bin" && go install github.com/googlecodelabs/tools/claat@latest
